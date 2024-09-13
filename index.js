@@ -196,8 +196,122 @@ const writeInTitleCase = (str) => {
   return result.join(" ");
 };
 
-console.log(writeInTitleCase("i am a boy"));
-console.log(writeInTitleCase("Lonely at the top"));
-console.log(
-  writeInTitleCase("titles of books, songs, movies, plays and others")
-);
+// console.log(writeInTitleCase("i am a boy"));
+// console.log(writeInTitleCase("Lonely at the top"));
+// console.log(
+//   writeInTitleCase("titles of books, songs, movies, plays and others")
+// );
+
+//Anagrams: Strings containing the same characters in the same quantity e.g money coding and coding money, rail safety and fairy tales
+
+const getCharMap = (str) => {
+  //Step 1 : Build a Character Map for String
+  const charMap = {};
+  str = str.toLowerCase().replace(/[\W]/g, "");
+  for (let char of str) {
+    charMap[char] = charMap[char] + 1 || 1;
+  }
+  return charMap;
+};
+const isAnagram = (str1, str2) => {
+  //Step 1 : Build a Character Map for String1
+  const charMap1 = getCharMap(str1);
+
+  //Step 1 : Build a Character Map for String1
+  const charMap2 = getCharMap(str2);
+
+  //Step 3: Compare the length of the chacter maps
+  if (Object.keys(charMap1).length !== Object.keys(charMap2).length)
+    return false;
+  for (let key in charMap1) {
+    if (charMap1[key] !== charMap2[key]) {
+      return false;
+    }
+  }
+  return true;
+};
+
+// console.log(isAnagram("RAIL! SAFETY!", "fairy tales"));
+// console.log(isAnagram("coding money", "money coding"));
+// console.log(isAnagram("Happy hour", "is going"));
+
+const sortedStr = (str) => {
+  return (str = str
+    .toLowerCase()
+    .replace(/[\W]/g, "")
+    .split("")
+    .sort()
+    .join(""));
+};
+
+const secondIsAnagram = (strA, strB) => {
+  strA = sortedStr(strA);
+  strB = sortedStr(strB);
+  return strA === strB;
+};
+
+// console.log(secondIsAnagram("Rail Safety!", "fairy tales"));
+//
+//
+//
+//
+//
+
+// Write a function that returns the number of vowels in a string
+
+const countVowels = (str) => {
+  let count = 0;
+  const vowelsHolder = ["a", "e", "i", "o", "u"];
+  let arr = str.toLowerCase().split("");
+  // for (let i = 0; i < arr.length; i++) {
+  //   if (vowelsHolder.includes(arr[i])) {
+  //     count++;
+  //   }
+  // }
+  for (item of arr) {
+    if (vowelsHolder.includes(item)) {
+      count++;
+    }
+  }
+  return count;
+};
+
+// console.log(countVowels("Happy Hour"));
+// console.log(countVowels("Amaliora"));
+// console.log(countVowels("coding money"));
+// console.log(countVowels("sky myth"));
+
+const secondCountVowels = (str) => {
+  const matches = str.toLowerCase().match(/[aeiou]/gi);
+  return matches ? matches.length : 0;
+};
+
+// console.log(secondCountVowels("Happy Hour"));
+// console.log(secondCountVowels("Amaliora"));
+// console.log(secondCountVowels("coding money"));
+// console.log(secondCountVowels("sky myth"));
+//
+//
+//
+//
+//
+
+//Write a program that logs the numbers from 1 to n. But for multiples of 3, it prints "fizz" instead of the number, for multiples of 5, it prints "buzz" and for multiples of both 3 and 5, it prints "fizzbuzz"
+
+const isfizzBuzz = (number) => {
+  for (let i = 1; i <= number; i++) {
+    if (i % 3 === 0 && i % 5 === 0) {
+      console.log("fizzbuzz");
+    } else if (i % 3 === 0) {
+      console.log("fizz");
+    } else if (i % 5 === 0) {
+      console.log("buzz");
+    } else {
+      console.log(i);
+    }
+  }
+};
+
+// isfizzBuzz(17);
+// isfizzBuzz(22);
+// isfizzBuzz(35);
