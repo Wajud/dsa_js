@@ -315,3 +315,55 @@ const isfizzBuzz = (number) => {
 // isfizzBuzz(17);
 // isfizzBuzz(22);
 // isfizzBuzz(35);
+//
+//
+//
+//
+// Write a function that accepts a positive number N. The function should console log a step shape with N levels using the # character. Make sure the step has spaces on the RHS
+
+const steps = (n) => {
+  for (let row = 1; row <= n; row++) {
+    let line = "";
+    for (let col = 1; col <= n; col++) {
+      if (col <= row) {
+        line += "#";
+      } else {
+        line += " ";
+      }
+    }
+    console.log(line);
+  }
+};
+
+// steps(5);
+//
+//
+//
+//
+//
+// Write a function that accepts a positive number N. The function should console log a pyramid shape with N levels using the # character. Make sure the step has spaces on the both LHS and RHS
+
+const pyramid = (n) => {
+  for (let row = 0; row < n; row++) {
+    line = "";
+    for (let col = 0; col < 2 * n - 1; col++) {
+      if (
+        col >= Math.floor((2 * n - 1) / 2) - row &&
+        col <= Math.floor((2 * n - 1) / 2) + row
+      ) {
+        line += "#";
+      } else {
+        line += " ";
+      }
+    }
+    console.log(line);
+  }
+};
+
+// pyramid(3);
+// pyramid(5)
+//
+//
+//
+//
+// Write a function that accepts an integer N and returns a NxN spiral matrix
